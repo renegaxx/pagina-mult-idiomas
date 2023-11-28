@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ativ Multlang</title>
+    <link rel="stylesheet" href="bacana.css">
+</head>
+
+<body>
+    <video autoplay loop muted class="video-bg">
+        <source
+            src="Red Burning Sparks Free Background Videos, Motion Graphics, No Copyright _ All Background Videos.mp4"
+            type="video/mp4">
+    </video>
+    <div id="cima-tudo">
+        <img class="logo" src="logo cinema.png">
+        <div class="texto-cima">
+            <button class="nav-botoes">
+                <p>Filmes</p>
+            </button>
+            <button class="nav-botoes">
+                <p>Catálogo</p>
+            </button>
+            <button class="nav-botoes">
+                <p>Notícias</p>
+            </button>
+            <button class="nav-botoes">
+                <p>Novo</p>
+            </button>
+        </div>
+
+        <div class="menu-search">
+            <img class="imgs1" src="search.png" onclick="togglePesquisa()">
+            <img class="imgs2" src="menu.png" onclick="toggleMenu()">
+            <img class="brasil" src="bandeiragrande.jpg" onclick="Escolher('ptbr')">
+            <img class="espanha" src="espanha.png" onclick="Escolher('es')">
+            <img class="EUA" src="download.png" onclick="Escolher('en')">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Pesquisar...">
+                <button class="nav-botoes" id="searchButton" onclick="togglePesquisa()">
+                    <p>Pesquisar</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="baixo-nav">
+        <div class="texto-baixo-nav">
+            <h1 id="titulo">Sobre <br></h1><p id="nos">Nós</p>
+            <i id="i1">O Cinema Itaim Paulista destaca-se como uma joia cinematográfica<br> na cidade de São Paulo, proporcionando aos seus frequentadores uma<br> experiência única e inigualável.</i>
+        </div>
+    </div>
+
+    <div id="ativ">
+        <div class="conteudo" id="paragrafo1">Iremos reformar 3 sites com melhoramento no nosso antigo site Cia das Massas</div>
+        <div class="conteudo" id="paragrafo2">Somos a Empresa IUpgrade web, Desenvolvemos o seu site desde o estágio inicial até a sua forma final de maneira única.</div>
+        <div class="conteudo" id="paragrafo3">Uma Empresa dedicada em desenvolvimento web.</div>
+        <div class="conteudo" id="paragrafo4">Temos interações com a comunidade e interação com o bot do discord, para um suporte ainda melhor.</div>
+        <div class="conteudo" id="paragrafo5">Pequenos elementos conforme oque foi proposto pelas atividades ao decorrer do semestre.</div>
+    </div>
+    <script>
+        function Escolher(idioma) {
+            fetch(`textos_${idioma}.json`)
+                .then(resposta => resposta.json())
+                .then(texto => {
+
+                    document.getElementById('paragrafo1').innerText = texto.paragrafo1
+                    document.getElementById('paragrafo2').innerText = texto.paragrafo2
+                    document.getElementById('paragrafo3').innerText = texto.paragrafo3
+                    document.getElementById('paragrafo4').innerText = texto.paragrafo4
+                    document.getElementById('paragrafo5').innerText = texto.paragrafo5
+                    document.getElementById('titulo').innerText = texto.titulo
+                    document.getElementById('nos').innerText = texto.nos
+                    document.getElementById('i1').innerText = texto.i1
+
+
+                })
+                .catch(error => console.erro('Erro buscando textos:', error));
+        }
+    </script>
+</body>
+
+</html>
